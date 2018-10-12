@@ -1,0 +1,16 @@
+# Define or paste the content of your docker-compose file here
+version: '3.3'
+services:
+  request-logger:
+    image: dextostone/request-logger
+    container_name: request-logger
+    ports:
+      - '9095:9094'
+    deploy:
+      mode: replicated
+      replicas: 3
+    networks:
+      - prometheus_default
+networks:
+  prometheus_default:
+    external: true
